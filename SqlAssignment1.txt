@@ -1,0 +1,84 @@
+1.From the following table return complete information about the employees.
+
+---> SELECT * FROM employee;
++--------+----------+-----------+------------+------------+--------+------------+--------+
+| emp_id | emp_name | job_name  | manager_id | hire_date  | salary | commission | dep_id |
++--------+----------+-----------+------------+------------+--------+------------+--------+
+|      1 | riya     | Manager   |          1 | 2023-01-15 |  50000 |       NULL |      1 |
+|      2 | Ansh     | Developer |       NULL | 2023-02-20 |  60000 |       NULL |      2 |
+|      3 | Lokesh   | Tester    |       NULL | 2023-03-10 |  55000 |       NULL |      2 |
+|      4 | Radha    | Analyst   |       NULL | 2023-04-05 |  65000 |       NULL |      3 |
++--------+----------+-----------+------------+------------+--------+------------+--------+
+
+2. From the following table, write a SQL query to find the salaries of all employees. Return salary.
+
+--->  SELECT salary FROM employee;
++--------+
+| salary |
++--------+
+|  50000 |
+|  60000 |
+|  55000 |
+|  65000 |
++--------+
+
+
+3. Add the column to employee table
+
+--->  ALTER TABLE employee ADD project_assign VARCHAR(50);
+     mysql> select * from employee;
++--------+----------+-----------+------------+------------+--------+------------+--------+------------+----------------+
+| emp_id | emp_name | job_name  | manager_id | hire_date  | salary | commission | dep_id | new_column | project_assign |
++--------+----------+-----------+------------+------------+--------+------------+--------+------------+----------------+
+|      1 | riya     | Manager   |          1 | 2023-01-15 |  50000 |       NULL |      1 | NULL       | NULL           |
+|      2 | Ansh     | Developer |       NULL | 2023-02-20 |  60000 |       NULL |      2 | NULL       | NULL           |
+|      3 | Lokesh   | Tester    |       NULL | 2023-03-10 |  55000 |       NULL |      2 | NULL       | NULL           |
+|      4 | Radha    | Analyst   |       NULL | 2023-04-05 |  65000 |       NULL |      3 | NULL       | NULL           |
++--------+----------+-----------+------------+------------+--------+------------+--------+------------+----------------+
+
+4. Add the column using change clause
+
+---> ALTER TABLE employee CHANGE job_name job_post VARCHAR(20);
+     mysql> select * from employee;
++--------+----------+-----------+------------+------------+--------+------------+--------+------------+----------------+
+| emp_id | emp_name | job_post  | manager_id | hire_date  | salary | commission | dep_id | new_column | project_assign |
++--------+----------+-----------+------------+------------+--------+------------+--------+------------+----------------+
+|      1 | riya     | Manager   |          1 | 2023-01-15 |  50000 |       NULL |      1 | NULL       | NULL           |
+|      2 | Ansh     | Developer |       NULL | 2023-02-20 |  60000 |       NULL |      2 | NULL       | NULL           |
+|      3 | Lokesh   | Tester    |       NULL | 2023-03-10 |  55000 |       NULL |      2 | NULL       | NULL           |
+|      4 | Radha    | Analyst   |       NULL | 2023-04-05 |  65000 |       NULL |      3 | NULL       | NULL           |
++--------+----------+-----------+------------+------------+--------+------------+--------+------------+----------------+
+
+5. Change the datatype of the column
+
+---> ALTER TABLE employee MODIFY salary DECIMAL(10,2);
+
+6. Add the column constranits using modify clause
+
+--->  ALTER TABLE employee MODIFY emp_name VARCHAR(15) NOT NULL;
+
+7. Drop the column
+
+--->  ALTER TABLE employee DROP COLUMN new_column;
+      mysql> select * from employee;
++--------+----------+-----------+------------+------------+----------+------------+--------+----------------+
+| emp_id | emp_name | job_post  | manager_id | hire_date  | salary   | commission | dep_id | project_assign |
++--------+----------+-----------+------------+------------+----------+------------+--------+----------------+
+|      1 | riya     | Manager   |          1 | 2023-01-15 | 50000.00 |       NULL |      1 | NULL           |
+|      2 | Ansh     | Developer |       NULL | 2023-02-20 | 60000.00 |       NULL |      2 | NULL           |
+|      3 | Lokesh   | Tester    |       NULL | 2023-03-10 | 55000.00 |       NULL |      2 | NULL           |
+|      4 | Radha    | Analyst   |       NULL | 2023-04-05 | 65000.00 |       NULL |      3 | NULL           |
++--------+----------+-----------+------------+------------+----------+------------+--------+----------------+
+
+8. How to use the ‘after keyword
+
+---> ALTER TABLE employee ADD project_assign VARCHAR(50) AFTER job_post;
+     mysql> select * from employee;
++--------+----------+-----------+----------------+------------+------------+----------+------------+--------+
+| emp_id | emp_name | job_post  | project_assign | manager_id | hire_date  | salary   | commission | dep_id |
++--------+----------+-----------+----------------+------------+------------+----------+------------+--------+
+|      1 | riya     | Manager   | NULL           |          1 | 2023-01-15 | 50000.00 |       NULL |      1 |
+|      2 | Ansh     | Developer | NULL           |       NULL | 2023-02-20 | 60000.00 |       NULL |      2 |
+|      3 | Lokesh   | Tester    | NULL           |       NULL | 2023-03-10 | 55000.00 |       NULL |      2 |
+|      4 | Radha    | Analyst   | NULL           |       NULL | 2023-04-05 | 65000.00 |       NULL |      3 |
++--------+----------+-----------+----------------+------------+------------+----------+------------+--------+
