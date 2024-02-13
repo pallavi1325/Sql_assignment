@@ -1,0 +1,106 @@
+1.  From the following table return complete information about the employees.
+
+---> select * from employee;
++--------+----------+-----------+------------+------------+----------+------------+--------+
+| emp_id | emp_name | job_name  | manager_id | hire_date  | salary   | commission | dep_id |
++--------+----------+-----------+------------+------------+----------+------------+--------+
+|      1 | riya     | Manager   |          1 | 2023-01-15 | 50000.00 |       NULL |      1 |
+|      2 | Ansh     | Developer |       NULL | 2023-02-20 | 60000.00 |       NULL |      2 |
+|      3 | Lokesh   | Tester    |       NULL | 2023-03-10 | 55000.00 |       NULL |      2 |
+|      4 | Radha    | Analyst   |       NULL | 2023-04-05 | 65000.00 |       NULL |      3 |
++--------+----------+-----------+------------+------------+----------+------------+--------+
+
+2.  From the following table, write a SQL query to find the salaries of all employees. Return salary.
+
+---> SELECT salary FROM employee;
++----------+
+| salary   |
++----------+
+| 50000.00 |
+| 60000.00 |
+| 55000.00 |
+| 65000.00 |
++----------+
+	
+3.  From the following table, write a SQL query to find the unique designations of the employees. Return job name.
+
+---> SELECT DISTINCT job_name FROM employee;
++-----------+
+| job_name  |
++-----------+
+| Manager   |
+| Developer |
+| Tester    |
+| Analyst   |
++-----------+
+
+4.  From the following table, write a SQL query to list the employees’ name, increased their salary by 15%, and expressed as number of Dollars.
+
+---> SELECT emp_name, ROUND(salary * 1.15, 2) AS increased_salary FROM employee;
++----------+------------------+
+| emp_name | increased_salary |
++----------+------------------+
+| riya     |         57500.00 |
+| Ansh     |         69000.00 |
+| Lokesh   |         63250.00 |
+| Radha    |         74750.00 |
++----------+------------------+
+
+5.  From the following table, write a SQL query to list the employee's name and job name as a format of "Employee & Job".
+
+---> SELECT CONCAT(emp_name, ' & ', job_name) AS "Employee & Job" FROM employee;
++------------------+
+| Employee & Job   |
++------------------+
+| riya & Manager   |
+| Ansh & Developer |
+| Lokesh & Tester  |
+| Radha & Analyst  |
++------------------+
+
+6.  Write a query in SQL to produce the output of employees as follows.
+    Employee riya(manager).
+
+---> SELECT CONCAT(emp_name, ' (manager)') AS Employee FROM employee WHERE job_name = 'Manager';
++----------------+
+| Employee       |
++----------------+
+| riya (manager) |
++----------------+
+
+7.  From the following table, write a SQL query to count the number of characters except the spaces for each employee name. Return employee name length.
+
+--->  SELECT emp_name, LENGTH(REPLACE(emp_name, ' ', '')) AS employee_name_length FROM employee;
++----------+----------------------+
+| emp_name | employee_name_length |
++----------+----------------------+
+| riya     |                    4 |
+| Ansh     |                    4 |
+| Lokesh   |                    6 |
+| Radha    |                    5 |
++----------+----------------------+
+
+8.  From the following table, write a SQL query to find the employee ID, salary, and commission of all the employees. 
+
+---> SELECT emp_id, salary, commission FROM employee;
++--------+----------+------------+
+| emp_id | salary   | commission |
++--------+----------+------------+
+|      1 | 50000.00 |       NULL |
+|      2 | 60000.00 |       NULL |
+|      3 | 55000.00 |       NULL |
+|      4 | 65000.00 |       NULL |
++--------+----------+------------+
+
+9.  From the following table, write a SQL query to find the unique department with jobs. Return department ID, Job name.
+
+---> 
+mysql> SELECT DISTINCT dep_id, job_name FROM employee;
++--------+-----------+
+| dep_id | job_name  |
++--------+-----------+
+|      1 | Manager   |
+|      2 | Developer |
+|      2 | Tester    |
+|      3 | Analyst   |
++--------+-----------+
